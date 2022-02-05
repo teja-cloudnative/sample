@@ -1,0 +1,4 @@
+- name: Install Gitlab
+  yum:
+    - policycoreutils-python
+    - openssh-server
