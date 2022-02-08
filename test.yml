@@ -1,5 +1,6 @@
 - name: Setup GITLAB Server
   hosts: TEST
+  become: yes
   roles:
     - gitlab
 

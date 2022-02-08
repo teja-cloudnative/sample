@@ -1,4 +1,20 @@
-- name: Install Gitlab
+- name: Install Dependencies
   yum:
     - policycoreutils-python
     - openssh-server
+    - perl
+    - postfix
+
+- name: Start the services
+  systemd:
+    name:
+      - sshd
+      - postfix
+    state: started
+    enabled: yes
+
+- name: Download Gitlab Repo
+  shell: curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | sudo bash
+
+- name: Install Gitlab Server
+  shell: yum install -y gitlab-ee
