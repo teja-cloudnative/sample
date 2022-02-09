@@ -9,7 +9,6 @@
 - name: Start the services
   systemd:
     name:
-      - sshd
       - postfix
     state: started
     enabled: yes
