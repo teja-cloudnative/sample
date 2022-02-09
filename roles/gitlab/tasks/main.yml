@@ -1,9 +1,10 @@
 - name: Install Dependencies
   yum:
-    - policycoreutils-python
-    - openssh-server
-    - perl
-    - postfix
+    name:
+      - policycoreutils-python
+      - openssh-server
+      - perl
+      - postfix
 
 - name: Start the services
   systemd:
