@@ -16,25 +16,25 @@
 #  value = aws_iam_group.demo-groups.*.arn
 #}
 
-resource "aws_iam_user_group_membership" "storage-admin" {
+resource "aws_iam_user_group_membership" "storage_admin1" {
   user = aws_iam_user.stadmin1
   groups = [
     aws_iam_group.storage-admin
   ]
 }
-resource "aws_iam_user_group_membership" "storage-admin" {
+resource "aws_iam_user_group_membership" "storage_admin2" {
   user = aws_iam_user.stadmin2
   groups = [
     aws_iam_group.storage-admin
   ]
 }
-resource "aws_iam_user_group_membership" "compute-admin" {
+resource "aws_iam_user_group_membership" "compute-admin1" {
   user = aws_iam_user.compadmin1
   groups = [
     aws_iam_group.compute-admin
   ]
 }
-resource "aws_iam_user_group_membership" "compute-admin" {
+resource "aws_iam_user_group_membership" "compute-admin2" {
   user = aws_iam_user.compadmin2
   groups = [
     aws_iam_group.compute-admin
