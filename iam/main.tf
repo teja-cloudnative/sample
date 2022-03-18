@@ -113,3 +113,7 @@ resource "aws_iam_group" "storage-admin" {
 resource "aws_iam_group" "compute-admin" {
   name = "compute-admin"
 }
+
+resource "aws_s3_bucket" "sample" {
+  bucket = "teja-18-03-2022"
+}
