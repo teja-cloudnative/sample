@@ -6,3 +6,8 @@ resource "aws_iam_user" "demo" {
 output "user_arn" {
   value = aws_iam_user.demo.*.arn
 }
+
+resource "aws_iam_group" "storage_admin" {
+  count = length(var.group)
+  name  = element(var.group,count.index)
+}
