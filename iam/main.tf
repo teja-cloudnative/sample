@@ -19,25 +19,25 @@
 resource "aws_iam_user_group_membership" "storage_admin1" {
   user = aws_iam_user.stadmin1.name
   groups = [
-    aws_iam_group.storage-admin
+    aws_iam_group.storage-admin.name
   ]
 }
 resource "aws_iam_user_group_membership" "storage_admin2" {
   user = aws_iam_user.stadmin2.name
   groups = [
-    aws_iam_group.storage-admin
+    aws_iam_group.storage-admin.name
   ]
 }
 resource "aws_iam_user_group_membership" "compute-admin1" {
   user = aws_iam_user.compadmin1.name
   groups = [
-    aws_iam_group.compute-admin
+    aws_iam_group.compute-admin.name
   ]
 }
 resource "aws_iam_user_group_membership" "compute-admin2" {
   user = aws_iam_user.compadmin2.name
   groups = [
-    aws_iam_group.compute-admin
+    aws_iam_group.compute-admin.name
   ]
 }
 resource "aws_iam_user" "stadmin1" {
