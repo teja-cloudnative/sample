@@ -7,7 +7,12 @@ variable "compute_user" {
   default = ["compadmin1","compadmin1","compadmin1"]
 }
 
-variable "iam_groups" {
+variable "storage_group" {
   type = list(string)
-  default = ["storage-admin", "compute-admin"]
+  default = ["storage-admin"]
+}
+
+variable "compute_group" {
+  type = list(string)
+  default = ["compute-admin"]
 }

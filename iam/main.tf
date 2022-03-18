@@ -7,14 +7,24 @@ resource "aws_iam_user" "compadmin" {
   count = length(var.compute_user)
   name  = element(var.compute_user,count.index)
 }
-resource "aws_iam_group" "iam-groups" {
-  count = length(var.iam_groups)
-  name  = element(var.iam_groups,count.index)
+resource "aws_iam_group" "sta-groups" {
+  count = length(var.storage_group)
+  name  = element(var.storage_group,count.index)
+}
+resource "aws_iam_group" "comp-groups" {
+  count = length(var.compute_group)
+  name  = element(var.compute_group,count.index)
 }
 resource "aws_iam_user_group_membership" "storage_admin1" {
-  user = aws_iam_user.stadmin.name
+  user = element(aws_iam_user.stadmin.name)
   groups = [
-    aws_iam_group.iam-groups.name
+    aws_iam_group.sta-groups.name
+  ]
+}
+resource "aws_iam_user_group_membership" "compu_admin1" {
+  user = element(aws_iam_user.compadmin.name)
+  groups = [
+    aws_iam_group.comp-groups.name
   ]
 }
 
@@ -24,9 +34,14 @@ output "user_arn" {
 }
 
 
-output "group_arn" {
-  value = aws_iam_group.iam-groups.*.arn
+output "stagroup_arn" {
+  value = aws_iam_group.sta-groups.*.arn
 }
+
+output "compgroup_arn" {
+  value = aws_iam_group.comp-groups.*.arn
+}
+
 
 #resource "aws_iam_user_group_membership" "storage_admin1" {
 #  user = aws_iam_user.stadmin1.name
